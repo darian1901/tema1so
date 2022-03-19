@@ -26,7 +26,7 @@ LinkedList* initializeWithFirstElement(char* key, char* value)
 	return l;
 }
 
-int addElement(LinkedList** l, char* key, char* value)
+int addElementLL(LinkedList** l, char* key, char* value)
 {
 	LinkedList* tmp;
 	tmp = NULL;
@@ -48,13 +48,12 @@ int addElement(LinkedList** l, char* key, char* value)
 	return 0;
 }
 
-char* findValueFromKey(LinkedList* l, char* key)
+char* findValueFromKeyLL(LinkedList* l, char* key)
 {
 	LinkedList* tmp;
 	tmp = l;
 	
 	while (tmp != NULL) {
-		printf("%s\n", tmp->key);
 		if (strcmp(tmp->key, key) == 0) {
 			return tmp->value;
 		} else {

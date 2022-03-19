@@ -6,7 +6,7 @@
 
 int main(int argc, char** argv)
 {
-	LinkedList* l;
+	HashMap* hm;
 	FILE* input_file;
 	FILE* out_file;
 	int i;
@@ -14,15 +14,20 @@ int main(int argc, char** argv)
 	char* flag_arg;
 	flag_arg = NULL;
 
-	l = initializeWithFirstElement("DEF0", "0");
-	addElement(&l, "DEF1", "1");
-	addElement(&l, "DEF2", "2");
-	addElement(&l, "DEF3", "3");
-	addElement(&l, "DEF4", "4");
+	hm = NULL;
 
-	printList(l);
-	freeList(&l);
-	printList(l);
+	/* TESTING */
+		hm = CreateHashMap(3);
+		printf("%p\n", hm);
+
+		addElement(hm, "DEF0", "0");
+		addElement(hm, "DEF1", "1");
+
+		printf("%s\n", findValueFromKey(hm, "DEF0"));
+		printf("%s\n", findValueFromKey(hm, "DEF1"));
+
+		freeHashMap(&hm);
+	/* TESTING */
 
 	for (i = 1; i < argc; ++i) {
 		if (strcmp(argv[i], "-D") == 0) {
