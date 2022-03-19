@@ -2,16 +2,28 @@
 #include <string.h>
 #include <stdlib.h>
 #include "hashmap.h"
+#include "linked_list.h"
 
 int main(int argc, char** argv)
 {
+	LinkedList* l;
 	FILE* input_file;
 	FILE* out_file;
 	int i;
 	
 	char* flag_arg;
 	flag_arg = NULL;
-	
+
+	l = initializeWithFirstElement("DEF0", "0");
+	addElement(&l, "DEF1", "1");
+	addElement(&l, "DEF2", "2");
+	addElement(&l, "DEF3", "3");
+	addElement(&l, "DEF4", "4");
+
+	printList(l);
+	freeList(&l);
+	printList(l);
+
 	for (i = 1; i < argc; ++i) {
 		if (strcmp(argv[i], "-D") == 0) {
 			// -D define
@@ -45,7 +57,6 @@ int main(int argc, char** argv)
 	if (flag_arg) {
 		free(flag_arg);
 	}
-
 
 	return 0;
 }
